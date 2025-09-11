@@ -1,0 +1,36 @@
+        // 1️⃣ Flow submission or Health Check
+        if (body.encrypted_flow_data) {
+            const decrypted = decryptPayload(body);
+            saveSubmission("unknown_user", decrypted);
+
+            // decrypt AES key again to encrypt response
+            const aesKey = crypto.privateDecrypt(
+                {
+                    key: privateKey,
+                    padding: crypto.constants.RSA_PKCS1_OAEP_PADDING,
+                    oaepHash: "sha256"
+                },
+                Buffer.from(body.encrypted_aes_key, "base64")
+            );
+
+            const initialVector = Buffer.from(req.body.initial_vector, "base64");
+            const encryptedResponse = encryptResponse(
+                JSON.stringify({ data: { status: "active" } }), // Meta expects JSON
+                aesKey,
+                initialVector
+            );
+
+            const signature = signResponse(encryptedResponse);
+            res.set("X-Signature", signature);
+            res.set("Content-Type", "application/json");
+            console.log("🔐 Encrypted response:", encryptedResponse);
+
+
+            console.log("✅ Flow submission or Health Check processed.0", encryptResponse);
+            // ✅ Correct JSON structure for Meta health check
+            res.set("X-WhatsApp-Signature", signature);
+            return res.type("text/plain").send(encryptedResponse);
+
+        }
+
+        return

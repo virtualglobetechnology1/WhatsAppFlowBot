@@ -1,0 +1,284 @@
+{
+  "version": "7.2",
+  "screens": [
+    {
+      "id": "KYC_BASIC_DETAILS",
+      "title": "KYC Step 1 of 5: Basic Details",
+      "data": {},
+      "layout": {
+        "type": "SingleColumnLayout",
+        "children": [
+          {
+            "type": "Form",
+            "name": "form",
+            "children": [
+              {
+                "type": "TextHeading",
+                "text": "Enter your basic details"
+              },
+              {
+                "type": "TextInput",
+                "label": "Firm Name",
+                "required": true,
+                "name": "firm_name"
+              },
+              {
+                "type": "TextInput",
+                "label": "Owner Name",
+                "required": true,
+                "name": "owner_name"
+              },
+              {
+                "type": "Footer",
+                "label": "Next",
+                "on-click-action": {
+                  "name": "navigate",
+                  "next": {
+                    "type": "screen",
+                    "name": "KYC_ID_DETAILS"
+                  },
+                  "payload": {
+                    "firm_name": "${form.firm_name}",
+                    "owner_name": "${form.owner_name}"
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "KYC_ID_DETAILS",
+      "title": "KYC Step 2 of 5: ID Details",
+      "data": {
+        "firm_name": {"type":"string","__example__":""},
+        "owner_name": {"type":"string","__example__":""}
+      },
+      "layout": {
+        "type": "SingleColumnLayout",
+        "children": [
+          {
+            "type": "Form",
+            "name": "form",
+            "children": [
+              {
+                "type": "TextHeading",
+                "text": "Enter your PAN & Aadhaar"
+              },
+              {
+                "type": "TextInput",
+                "label": "PAN Number",
+                "required": true,
+                "name": "pan_number"
+              },
+              {
+                "type": "TextInput",
+                "label": "Aadhaar Number",
+                "required": true,
+                "name": "aadhaar_number"
+              },
+              {
+                "type": "Footer",
+                "label": "Next",
+                "on-click-action": {
+                  "name": "navigate",
+                  "next": {
+                    "type": "screen",
+                    "name": "KYC_CONTACT_DETAILS"
+                  },
+                  "payload": {
+                    "firm_name": "${data.firm_name}",
+                    "owner_name": "${data.owner_name}",
+                    "pan_number": "${form.pan_number}",
+                    "aadhaar_number": "${form.aadhaar_number}"
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "KYC_CONTACT_DETAILS",
+      "title": "KYC Step 3 of 5: Contact Details",
+      "data": {
+        "firm_name": {"type":"string","__example__":""},
+        "owner_name": {"type":"string","__example__":""},
+        "pan_number": {"type":"string","__example__":""},
+        "aadhaar_number": {"type":"string","__example__":""}
+      },
+      "layout": {
+        "type": "SingleColumnLayout",
+        "children": [
+          {
+            "type": "Form",
+            "name": "form",
+            "children": [
+              {
+                "type": "TextHeading",
+                "text": "Enter your contact details"
+              },
+              {
+                "type": "TextInput",
+                "label": "Email",
+                "required": true,
+                "name": "email"
+              },
+              {
+                "type": "TextInput",
+                "label": "Phone",
+                "required": true,
+                "name": "phone"
+              },
+              {
+                "type": "Footer",
+                "label": "Next",
+                "on-click-action": {
+                  "name": "navigate",
+                  "next": {
+                    "type": "screen",
+                    "name": "KYC_ADDRESS_DETAILS"
+                  },
+                  "payload": {
+                    "firm_name": "${data.firm_name}",
+                    "owner_name": "${data.owner_name}",
+                    "pan_number": "${data.pan_number}",
+                    "aadhaar_number": "${data.aadhaar_number}",
+                    "email": "${form.email}",
+                    "phone": "${form.phone}"
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "KYC_ADDRESS_DETAILS",
+      "title": "KYC Step 4 of 5: Address Details",
+      "data": {
+        "firm_name": {"type":"string","__example__":""},
+        "owner_name": {"type":"string","__example__":""},
+        "pan_number": {"type":"string","__example__":""},
+        "aadhaar_number": {"type":"string","__example__":""},
+        "email": {"type":"string","__example__":""},
+        "phone": {"type":"string","__example__":""}
+      },
+      "layout": {
+        "type": "SingleColumnLayout",
+        "children": [
+          {
+            "type": "Form",
+            "name": "form",
+            "children": [
+              {
+                "type": "TextHeading",
+                "text": "Enter your address details"
+              },
+              {
+                "type": "TextInput",
+                "label": "City",
+                "required": true,
+                "name": "city"
+              },
+              {
+                "type": "TextInput",
+                "label": "District",
+                "required": true,
+                "name": "district"
+              },
+              {
+                "type": "TextInput",
+                "label": "Taluka",
+                "required": true,
+                "name": "taluka"
+              },
+              {
+                "type": "TextInput",
+                "label": "PIN Code",
+                "required": true,
+                "name": "pin"
+              },
+              {
+                "type": "Footer",
+                "label": "Next",
+                "on-click-action": {
+                  "name": "navigate",
+                  "next": {
+                    "type": "screen",
+                    "name": "KYC_DOC_INSTRUCTION"
+                  },
+                  "payload": {
+                    "firm_name": "${data.firm_name}",
+                    "owner_name": "${data.owner_name}",
+                    "pan_number": "${data.pan_number}",
+                    "aadhaar_number": "${data.aadhaar_number}",
+                    "email": "${data.email}",
+                    "phone": "${data.phone}",
+                    "city": "${form.city}",
+                    "district": "${form.district}",
+                    "taluka": "${form.taluka}",
+                    "pin": "${form.pin}"
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "KYC_DOC_INSTRUCTION",
+      "title": "KYC Step 5 of 5: Document Upload Instructions",
+      "terminal": true,
+      "success": true,
+      "data": {
+        "firm_name": {"type":"string","__example__":""},
+        "owner_name": {"type":"string","__example__":""},
+        "pan_number": {"type":"string","__example__":""},
+        "aadhaar_number": {"type":"string","__example__":""},
+        "email": {"type":"string","__example__":""},
+        "phone": {"type":"string","__example__":""},
+        "city": {"type":"string","__example__":""},
+        "district": {"type":"string","__example__":""},
+        "taluka": {"type":"string","__example__":""},
+        "pin": {"type":"string","__example__":""}
+      },
+      "layout": {
+        "type": "SingleColumnLayout",
+        "children": [
+          {
+            "type": "TextHeading",
+            "text": "Please upload your PAN & Aadhaar documents."
+          },
+          {
+            "type": "TextHeading",
+            "text": "KYC Details:\nFirm: ${data.firm_name}\nOwner: ${data.owner_name}\nPAN: ${data.pan_number}\nAadhaar: ${data.aadhaar_number}\nEmail: ${data.email}\nPhone: ${data.phone}\nCity: ${data.city}\nDistrict: ${data.district}\nTaluka: ${data.taluka}\nPIN: ${data.pin}"
+          },
+          {
+            "type": "Footer",
+            "label": "Complete KYC",
+            "on-click-action": {
+              "name": "complete",
+              "payload": {
+                "firm_name": "${data.firm_name}",
+                "owner_name": "${data.owner_name}",
+                "pan_number": "${data.pan_number}",
+                "aadhaar_number": "${data.aadhaar_number}",
+                "email": "${data.email}",
+                "phone": "${data.phone}",
+                "city": "${data.city}",
+                "district": "${data.district}",
+                "taluka": "${data.taluka}",
+                "pin": "${data.pin}"
+              }
+            }
+          }
+        ]
+      }
+    }
+  ]
+}
