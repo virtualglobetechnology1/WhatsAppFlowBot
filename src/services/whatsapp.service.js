@@ -103,7 +103,7 @@ async function sendKycFlow(to) {
                     flow_cta: "Open Form",
                     flow_action: "navigate",
                     flow_action_payload: JSON.stringify({
-                        screen: "KYC_BASIC_DETAILS"
+                        screen: "KYC_BASIC_DETAILS_PART"
                     })
                 }
             }

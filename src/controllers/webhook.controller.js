@@ -152,6 +152,12 @@ exports.handleWebhook = async (req, res) => {
 
             console.log("📥 Flow reply JSON:", responseData);
 
+            if (responseData.basic_details) {
+                console.log("📝 Basic Details:", responseData.basic_details);
+            }
+            if (responseData.auth_details) {
+                console.log("🔑 Auth Details:", responseData.auth_details);
+            }
             // Case 1: Check Status Flow
             if (responseData?.reference_number) {
                 const statusData = await fetchApplicationStatus(responseData.reference_number);
@@ -170,7 +176,7 @@ exports.handleWebhook = async (req, res) => {
             // Case 2: KYC Flow
             else {
                 saveSubmission(from, responseData);
-                await sendText(from, "✅ Thank you! Your KYC request has been received.");
+                await sendText(from, "✅ Thank you! Your KYC request has been received. Email Send! Please check your email id for Activation process!");
             }
             markMessageAsProcessed(messageId);
         } else {

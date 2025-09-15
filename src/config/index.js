@@ -10,7 +10,7 @@ const publicKey = fs.readFileSync(path.join(keysPath, "public_key.pem"), "utf8")
 
 module.exports = {
     PORT: process.env.PORT || 3000,
-    TOKEN: process.env.TOKEN || "EAAUyalZBUsakBPfEpa6oiQ6cnLpvvaxpgZB2NZCq26J2Vmh7Hx9U0E8j8ydzz4innOuZAjJjZB1J0A2N5dwY2cN4LUsCGF6Krtb7jezKe2f7xNOG5ajl5MMPYREMpVrXQHxZCBPhifvNeVKC23M6yazP72Wv0HOwnK2YKU04GWGx6sKThZChuQOZAlv9Y0LmuM25kXUtaqWkJEmy5bzZAvzBnscXzcZCMkk6hyr2Tjfhz4nAYZD",
+    TOKEN: process.env.TOKEN || "EAAVQ6ZBAhzTkBPedMHC8ZCN7wsNAKb5YaYoZCdbvPERpTUMPasIbbmaE8UPDRWBpXau7LZAqya2sD73JvZCu4ZAxN48fZBPhqPqsxSnQGKNqkaZBBpCNaHnFY5KHxMIaDgBorKhZCbUW3NA40cErj5aTfr8Vp7xZCnRBLM7bgnRt8Xx9ZAwmEFwPYdGX8bFdECVhBN7inhDDtW5TUs4RVZAzzEx5y5VcUAWKpT1ZBJQppk7KZC",
     PHONE_NUMBER_ID: process.env.PHONE_NUMBER_ID || "772137989315128",
     VERIFY_TOKEN: process.env.VERIFY_TOKEN || "my_secret_token",
     APPOINTMENT_FLOW_ID: process.env.APPOINTMENT_FLOW_ID || "1209029364594686",
